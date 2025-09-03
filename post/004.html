@@ -1,0 +1,275 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>利用 clash tunnel 实现内网穿透 | finalpi开发日记</title><meta name="author" content="finalpi"><meta name="copyright" content="finalpi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言对于内网穿透我研究了很久，网上流行的内网穿透方案对于没有 ipv4 地址的我来说都有其缺点。 总结一下，ipv6 穿透需要客户端也支持，兼容性不够高。 Lucky 的 stun 穿透端口号又一直在变，很多服务也并不支持 hook 改端口，更重要的是不够安全，不能配置 tls，信息可能会被第三方监听。 Cloudflare 的 tun 隧道似乎挺完美了，奈何 GFW 对其存在干扰，稳定性不够。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用 clash tunnel 实现内网穿透">
+<meta property="og:url" content="https://finalpi.github.io/post/004.html">
+<meta property="og:site_name" content="finalpi开发日记">
+<meta property="og:description" content="前言对于内网穿透我研究了很久，网上流行的内网穿透方案对于没有 ipv4 地址的我来说都有其缺点。 总结一下，ipv6 穿透需要客户端也支持，兼容性不够高。 Lucky 的 stun 穿透端口号又一直在变，很多服务也并不支持 hook 改端口，更重要的是不够安全，不能配置 tls，信息可能会被第三方监听。 Cloudflare 的 tun 隧道似乎挺完美了，奈何 GFW 对其存在干扰，稳定性不够。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://finalpi.github.io/static/img_12.png">
+<meta property="article:published_time" content="2025-08-11T15:46:22.000Z">
+<meta property="article:modified_time" content="2025-09-03T07:34:35.000Z">
+<meta property="article:author" content="finalpi">
+<meta property="article:tag" content="Clash">
+<meta property="article:tag" content="Lucky">
+<meta property="article:tag" content="内网穿透">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://finalpi.github.io/static/img_12.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://finalpi.github.io/post/004.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//www.clarity.ms"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-G7J9NXDC11"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-G7J9NXDC11');
+</script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "o94gw1tjul");</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '利用 clash tunnel 实现内网穿透',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-09-03 07:34:35'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://finalpi.github.io/static/img_12.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/static/background.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="finalpi开发日记"><span class="site-name">finalpi开发日记</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">利用 clash tunnel 实现内网穿透</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-08-11T15:46:22.000Z" title="发表于 2025-08-11 15:46:22">2025-08-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-03T07:34:35.000Z" title="更新于 2025-09-03 07:34:35">2025-09-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">987</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title="利用 clash tunnel 实现内网穿透"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="waline-pageview-count" data-path="/post/004.html"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/post/004.html#post-comment"><span class="waline-comment-count" data-path="/post/004.html"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>对于内网穿透我研究了很久，网上流行的内网穿透方案对于没有 ipv4 地址的我来说都有其缺点。 总结一下，ipv6 穿透需要客户端也支持，兼容性不够高。 Lucky 的 stun 穿透端口号又一直在变，很多服务也并不支持 hook 改端口，更重要的是不够安全，不能配置 tls，信息可能会被第三方监听。 Cloudflare 的 tun 隧道似乎挺完美了，奈何 GFW 对其存在干扰，稳定性不够。 frp 之类的反代方案又取决于服务器的带宽，如果要用 tls 还要备案，很麻烦。</p>
+<p>所以我考虑了安全性使用便捷性想出了这样的方案。 对于我来说，Clash 是必备的工具，所以我打算利用 Clash 的 Tunnel 来转发内网的流量。 也就是说我需要加入一个节点来代理内网里面的流量。对于 stun 穿透端口号一直变的问题， 可以利用 Lucky 的 Webhook 将 ip 和端口号调用接口配置。接下来要做的就是在 Clash 配置定时刷新订阅，或者用 API 调用订阅刷新即可。</p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li>公网服务器，用作 clash 订阅</li>
+<li>内网服务器</li>
+</ul>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="在内网服务器搭建-v2ray-服务器"><a href="#在内网服务器搭建-v2ray-服务器" class="headerlink" title="在内网服务器搭建 v2ray 服务器"></a>在内网服务器搭建 v2ray 服务器</h2><p>主要是用于代理内网的网络，使用 v2ray 是因为配置出入站规则比较灵活，有更高的安全性。 在这里我使用 docker 部署。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">v2ray:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">v2fly/v2fly-core</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">v2ray</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">TZ=Asia/Shanghai</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./config:/etc/v2ray</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;10086:10086&quot;</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&quot;run&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;/etc/v2ray/config.json&quot;</span>]</span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br></pre></td></tr></table></figure>
+
+<p>在当前目录新建一个 config&#x2F;config.json</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;inbounds&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="number">10086</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vmess&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;settings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;clients&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">          <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;28492f21-c626-4309-9d23-c8884194c3ba&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;alterId&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;outbounds&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;freedom&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;blackhole&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;blocked&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;routing&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;rules&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;field&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;outboundTag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;freedom&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;ip&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;192.168.1.88&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="string">&quot;8096&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;field&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;outboundTag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;freedom&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;ip&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;192.168.1.1&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="string">&quot;9090&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;field&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;outboundTag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;blocked&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;ip&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;0.0.0.0/0&quot;</span><span class="punctuation">,</span> <span class="string">&quot;::/0&quot;</span><span class="punctuation">]</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>配置规则只允许指定的 ip 端口号的流量出站，其他流量一律 blocked，然后 <code>docker-compose up -d</code> 启动服务</p>
+<h2 id="部署-clash-订阅服务"><a href="#部署-clash-订阅服务" class="headerlink" title="部署 clash 订阅服务"></a>部署 clash 订阅服务</h2><p>该服务主要用于更新和查看 clash 内网节点的地址，在这里我自己写了一个 Java 服务用于设置和查看 clash 地址。读者可自行编写该接口，将该服务部署到公网服务器。</p>
+<p><img src="/../static/img_13.png" alt="img_13.png"></p>
+<h2 id="在-Lucky-中配置-webhook"><a href="#在-Lucky-中配置-webhook" class="headerlink" title="在 Lucky 中配置 webhook"></a>在 Lucky 中配置 webhook</h2><p>把 v2ray 的服务使用 stun 穿透出去<br><img src="/../static/img_14.png" alt="img_14.png"></p>
+<p>配置 webhook 设置节点的 ip 和端口号</p>
+<p><img src="/../static/img_16.png" alt="img_16.png"></p>
+<p>查询出来的结果应该是这样的</p>
+<p><img src="/../static/img_15.png" alt="img_15.png"></p>
+<h2 id="clash-配置"><a href="#clash-配置" class="headerlink" title="clash 配置"></a>clash 配置</h2><p>在这里我使用了 subconverter 订阅转换，可以方便配置策略组和自定义规则</p>
+<h3 id="配置策略组"><a href="#配置策略组" class="headerlink" title="配置策略组"></a>配置策略组</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">custom_proxy_group=Home`select`家里云`[]DIRECT</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-tunnel"><a href="#配置-tunnel" class="headerlink" title="配置 tunnel"></a>配置 tunnel</h3><p>配置示例：<a target="_blank" rel="noopener" href="https://github.com/finalpi/ACL4SSR/blob/master/config_template.yaml">https://github.com/finalpi/ACL4SSR/blob/master/config_template.yaml</a></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 内网穿透</span></span><br><span class="line"><span class="attr">tunnels:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">network:</span> [<span class="string">tcp</span>, <span class="string">udp</span>]</span><br><span class="line">  <span class="attr">address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:13000</span></span><br><span class="line">  <span class="attr">target:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.88</span><span class="string">:8096</span></span><br><span class="line">  <span class="attr">proxy:</span> <span class="string">Home</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">network:</span> [<span class="string">tcp</span>, <span class="string">udp</span>]</span><br><span class="line">  <span class="attr">address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:13001</span></span><br><span class="line">  <span class="attr">target:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.180</span><span class="string">:445</span></span><br><span class="line">  <span class="attr">proxy:</span> <span class="string">Home</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">network:</span> [<span class="string">tcp</span>, <span class="string">udp</span>]</span><br><span class="line">  <span class="attr">address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:13002</span></span><br><span class="line">  <span class="attr">target:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span><span class="string">:9090</span></span><br><span class="line">  <span class="attr">proxy:</span> <span class="string">Home</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">network:</span> [<span class="string">tcp</span>, <span class="string">udp</span>]</span><br><span class="line">  <span class="attr">address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:13003</span></span><br><span class="line">  <span class="attr">target:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.88</span><span class="string">:4533</span></span><br><span class="line">  <span class="attr">proxy:</span> <span class="string">Home</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">network:</span> [<span class="string">tcp</span>, <span class="string">udp</span>]</span><br><span class="line">  <span class="attr">address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:13004</span></span><br><span class="line">  <span class="attr">target:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.88</span><span class="string">:8971</span></span><br><span class="line">  <span class="attr">proxy:</span> <span class="string">Home</span></span><br></pre></td></tr></table></figure>
+
+<p>address 是你本地访问的地址，target 是内网服务的地址。address 的端口号建议配置在 10000 以上，因为 Android 上的 clash 服务开启 10000 以上的端口不需要 root 权限。</p>
+<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>这样只需要配置定时刷新订阅即可很方便又安全的访问内网服务了，并且能跑满带宽上行。</p>
+<p><img src="/../static/img_17.png" alt="img_17.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://finalpi.github.io">finalpi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://finalpi.github.io/post/004.html">https://finalpi.github.io/post/004.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://finalpi.github.io" target="_blank">finalpi开发日记</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Clash/">Clash</a><a class="post-meta__tags" href="/tags/Lucky/">Lucky</a><a class="post-meta__tags" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a></div><div class="post_share"><div class="social-share" data-image="https://finalpi.github.io/static/img_12.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/post/005.html" title="常用 Magisk 模块"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">常用 Magisk 模块</div></div></a></div><div class="next-post pull-right"><a href="/post/003.html" title="Firefox for Android 信任系统第三方证书"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Firefox for Android 信任系统第三方证书</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/post/fakeddns-1.html" title="使用Lucky的WebHook实现Stun的伪DDNS(重定向)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-10</div><div class="title">使用Lucky的WebHook实现Stun的伪DDNS(重定向)</div></div></a></div><div><a href="/post/intranet-penetration-1.html" title="基于NAT1的内网穿透方案的实现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-06</div><div class="title">基于NAT1的内网穿透方案的实现</div></div></a></div><div><a href="/post/post_001.html" title="解决Cloudflare的Tunnel频繁掉线的问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-06</div><div class="title">解决Cloudflare的Tunnel频繁掉线的问题</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://finalpi.github.io/static/img_12.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">finalpi</div><div class="author-info__description">愿你我都能获得精神上的自由</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/finalpi"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.</span> <span class="toc-text">步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA-v2ray-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">3.1.</span> <span class="toc-text">在内网服务器搭建 v2ray 服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2-clash-%E8%AE%A2%E9%98%85%E6%9C%8D%E5%8A%A1"><span class="toc-number">3.2.</span> <span class="toc-text">部署 clash 订阅服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-Lucky-%E4%B8%AD%E9%85%8D%E7%BD%AE-webhook"><span class="toc-number">3.3.</span> <span class="toc-text">在 Lucky 中配置 webhook</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#clash-%E9%85%8D%E7%BD%AE"><span class="toc-number">3.4.</span> <span class="toc-text">clash 配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%AD%96%E7%95%A5%E7%BB%84"><span class="toc-number">3.4.1.</span> <span class="toc-text">配置策略组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-tunnel"><span class="toc-number">3.4.2.</span> <span class="toc-text">配置 tunnel</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E5%B0%BE"><span class="toc-number">4.</span> <span class="toc-text">结尾</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/005.html" title="常用 Magisk 模块">常用 Magisk 模块</a><time datetime="2025-09-03T14:08:55.000Z" title="发表于 2025-09-03 14:08:55">2025-09-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/004.html" title="利用 clash tunnel 实现内网穿透">利用 clash tunnel 实现内网穿透</a><time datetime="2025-08-11T15:46:22.000Z" title="发表于 2025-08-11 15:46:22">2025-08-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/003.html" title="Firefox for Android 信任系统第三方证书">Firefox for Android 信任系统第三方证书</a><time datetime="2025-07-28T09:16:18.000Z" title="发表于 2025-07-28 09:16:18">2025-07-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/002.html" title="记一次在 Windows 系统下使用 Tun 模式出现的 Dns 泄露问题">记一次在 Windows 系统下使用 Tun 模式出现的 Dns 泄露问题</a><time datetime="2024-11-20T10:21:18.000Z" title="发表于 2024-11-20 10:21:18">2024-11-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/2024-09-06.html" title="nothing phone2a 刷入 magisk">nothing phone2a 刷入 magisk</a><time datetime="2024-09-06T17:06:30.000Z" title="发表于 2024-09-06 17:06:30">2024-09-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By finalpi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+
+  const initWaline = (Fn) => {
+    const waline = Fn(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://vercel-one-rho-44.vercel.app',
+      pageview: true,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+    }, {"meta":["nick"],"requiredMeta":["nick"],"imageUploader":false}))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    btf.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+  }
+
+  const loadWaline = async () => {
+    if (initFn) initWaline(initFn)
+    else {
+      await getCSS('https://cdn.jsdelivr.net/npm/@waline/client@3.1.2/dist/waline.min.css')
+      const { init } = await import('https://cdn.jsdelivr.net/npm/@waline/client@3.1.2/dist/waline.min.js')
+      initFn = init || Waline.init
+      initWaline(initFn)
+      window.walineFn = initFn
+    }
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

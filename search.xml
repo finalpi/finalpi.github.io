@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>设置Openwrt的steam不走代理</title>
+    <url>//post/001.html</url>
+    <content><![CDATA[<h2 id="Steam直连将以下连接添加进直连列表-刷新Dns缓存"><a href="#Steam直连将以下连接添加进直连列表-刷新Dns缓存" class="headerlink" title="Steam直连将以下连接添加进直连列表,刷新Dns缓存"></a>Steam直连将以下连接添加进直连列表,刷新Dns缓存</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">digicert.com</span><br><span class="line">plex.tv</span><br><span class="line">playartifact.com</span><br><span class="line">s.team</span><br><span class="line">steam-chat.com</span><br><span class="line">steamcontent.com</span><br><span class="line">steamgames.com</span><br><span class="line">steampowered.com</span><br><span class="line">steamstatic.com</span><br><span class="line">steamusercontent.com</span><br><span class="line">underlords.com</span><br><span class="line">valvesoftware.com</span><br><span class="line">csgo.wmsj.cn</span><br><span class="line">dota2.wmsj.cn</span><br><span class="line">wmsjsteam.com</span><br><span class="line">dl.steam.clngaa.com</span><br><span class="line">dl.steam.ksyna.com</span><br><span class="line">st.dl.bscstorage.net</span><br><span class="line">st.dl.eccdnx.com</span><br><span class="line">st.dl.pinyuncloud.com</span><br><span class="line">steampipe.steamcontent.tnkjmec.com</span><br><span class="line">steampowered.com.8686c.com</span><br><span class="line">steamstatic.com.8686c.com</span><br><span class="line">steambroadcast.akamaized.net</span><br><span class="line">steamcdn-a.akamaihd.net</span><br><span class="line">steamcommunity-a.akamaihd.net</span><br><span class="line">steamstore-a.akamaihd.net</span><br><span class="line">steamusercontent-a.akamaihd.net</span><br><span class="line">steamuserimages-a.akamaihd.net</span><br><span class="line">steamvideo-a.akamaihd.net</span><br><span class="line">steamchina.com</span><br><span class="line">apple.cn</span><br><span class="line">apple.com.cn</span><br><span class="line">apple-store.cn</span><br><span class="line">applestore.cn</span><br><span class="line">applestore.com.cn</span><br><span class="line">apple-appstore.cn</span><br><span class="line">appleappstore.cn</span><br><span class="line">appstoreapple.cn</span><br><span class="line">iphone-8.com.cn</span><br><span class="line">ipod.com.cn</span><br><span class="line">macbookair.cn</span><br><span class="line">macbookair.com.cn</span><br><span class="line">applepaycash.cn</span><br><span class="line">applepaycash.com.cn</span><br><span class="line">applepaysupplies.cn</span><br><span class="line">applepaysupplies.com.cn</span><br><span class="line">appletv4.cn</span><br><span class="line">appletv4.com.cn</span><br><span class="line">apple-dns.cn</span><br><span class="line">apple-dns.com.cn</span><br><span class="line">apple-ibooks.cn</span><br><span class="line">apple-maps.cn</span><br><span class="line">applecenter.cn</span><br><span class="line">applecenter.com.cn</span><br><span class="line">applecomputer.cn</span><br><span class="line">applecomputer.com.cn</span><br><span class="line">appledns.cn</span><br><span class="line">appledns.com.cn</span><br><span class="line">applesiri.cn</span><br><span class="line">ecgapp.com.cn</span><br><span class="line">faceshift.cn</span><br><span class="line">homepod.cn</span><br><span class="line">insidear.cn</span><br><span class="line">livephotos.cn</span><br><span class="line">livephotos.com.cn</span><br><span class="line">xn--ohq11k7pl25iyo8a.cn</span><br><span class="line">amp-api-search-edge.apps.apple.com</span><br><span class="line">amp-api.apps.apple.com</span><br><span class="line">aod.itunes.apple.com</span><br><span class="line">api-edge.apps.apple.com</span><br><span class="line">apptrailers.itunes.apple.com</span><br><span class="line">bag.itunes.apple.com</span><br><span class="line">bookkeeper.itunes.apple.com</span><br><span class="line">client-api.itunes.apple.com</span><br><span class="line">cma.itunes.apple.com</span><br><span class="line">communities.apple.com</span><br><span class="line">discussionschinese.apple.com</span><br><span class="line">downloaddispatch.itunes.apple.com</span><br><span class="line">fides-pol.apple.com</span><br><span class="line">gspe11-2-cn-ssl.ls.apple.com</span><br><span class="line">gspe12-cn-ssl.ls.apple.com</span><br><span class="line">gspe85-cn-ssl.ls.apple.com</span><br><span class="line">init.itunes.apple.com</span><br><span class="line">iosapps.itunes.apple.com</span><br><span class="line">js-cdn.music.apple.com</span><br><span class="line">km.support.apple.com</span><br><span class="line">maps.apple.com</span><br><span class="line">osxapps.itunes.apple.com</span><br><span class="line">pd.itunes.apple.com</span><br><span class="line">play.itunes.apple.com</span><br><span class="line">se-edge.itunes.apple.com</span><br><span class="line">se2.itunes.apple.com</span><br><span class="line">search.itunes.apple.com</span><br><span class="line">sf-api-token-service.itunes.apple.com</span><br><span class="line">sp.itunes.apple.com</span><br><span class="line">stocks-sparkline.apple.com</span><br><span class="line">streamingaudio.itunes.apple.com</span><br><span class="line">su.itunes.apple.com</span><br><span class="line">sync.itunes.apple.com</span><br><span class="line">upp.itunes.apple.com</span><br><span class="line">weather-data.apple.com</span><br><span class="line">a1.mzstatic.com</span><br><span class="line">a2.mzstatic.com</span><br><span class="line">a3.mzstatic.com</span><br><span class="line">a4.mzstatic.com</span><br><span class="line">a5.mzstatic.com</span><br><span class="line">adcdownload.apple.com.akadns.net</span><br><span class="line">adcdownload.apple.com</span><br><span class="line">appldnld.apple.com</span><br><span class="line">appldnld.g.aaplimg.com</span><br><span class="line">apps.mzstatic.com</span><br><span class="line">cdn-cn1.apple-mapkit.com</span><br><span class="line">cdn-cn2.apple-mapkit.com</span><br><span class="line">cdn-cn3.apple-mapkit.com</span><br><span class="line">cdn-cn4.apple-mapkit.com</span><br><span class="line">cdn.apple-mapkit.com</span><br><span class="line">cdn1.apple-mapkit.com</span><br><span class="line">cdn2.apple-mapkit.com</span><br><span class="line">cdn3.apple-mapkit.com</span><br><span class="line">cdn4.apple-mapkit.com</span><br><span class="line">cds-cdn.v.aaplimg.com</span><br><span class="line">cds.apple.com.akadns.net</span><br><span class="line">cds.apple.com</span><br><span class="line">cl1-cdn.origin-apple.com.akadns.net</span><br><span class="line">cl1.apple.com</span><br><span class="line">cl2-cn.apple.com</span><br><span class="line">cl2.apple.com.edgekey.net.globalredir.akadns.net</span><br><span class="line">cl2.apple.com</span><br><span class="line">cl3-cdn.origin-apple.com.akadns.net</span><br><span class="line">cl3.apple.com</span><br><span class="line">cl4-cdn.origin-apple.com.akadns.net</span><br><span class="line">cl4-cn.apple.com</span><br><span class="line">cl4.apple.com</span><br><span class="line">cl5-cdn.origin-apple.com.akadns.net</span><br><span class="line">cl5.apple.com</span><br><span class="line">clientflow.apple.com.akadns.net</span><br><span class="line">clientflow.apple.com</span><br><span class="line">configuration.apple.com.akadns.net</span><br><span class="line">configuration.apple.com</span><br><span class="line">cstat.apple.com</span><br><span class="line">dd-cdn.origin-apple.com.akadns.net</span><br><span class="line">download.developer.apple.com</span><br><span class="line">gs-loc-cn.apple.com</span><br><span class="line">gs-loc.apple.com</span><br><span class="line">gsp10-ssl-cn.ls.apple.com</span><br><span class="line">gsp11-cn.ls.apple.com</span><br><span class="line">gsp12-cn.ls.apple.com</span><br><span class="line">gsp13-cn.ls.apple.com</span><br><span class="line">gsp4-cn.ls.apple.com.edgekey.net.globalredir.akadns.net</span><br><span class="line">gsp4-cn.ls.apple.com.edgekey.net</span><br><span class="line">gsp4-cn.ls.apple.com</span><br><span class="line">gsp5-cn.ls.apple.com</span><br><span class="line">gsp85-cn-ssl.ls.apple.com</span><br><span class="line">gspe19-cn-ssl.ls.apple.com</span><br><span class="line">gspe19-cn.ls-apple.com.akadns.net</span><br><span class="line">gspe19-cn.ls.apple.com</span><br><span class="line">gspe21-ssl.ls.apple.com</span><br><span class="line">gspe21.ls.apple.com</span><br><span class="line">gspe35-ssl.ls.apple.com</span><br><span class="line">iadsdk.apple.com</span><br><span class="line">icloud-cdn.icloud.com.akadns.net</span><br><span class="line">icloud.cdn-apple.com</span><br><span class="line">images.apple.com.akadns.net</span><br><span class="line">images.apple.com.edgekey.net.globalredir.akadns.net</span><br><span class="line">images.apple.com</span><br><span class="line">init-p01md-lb.push-apple.com.akadns.net</span><br><span class="line">init-p01md.apple.com</span><br><span class="line">init-p01st-lb.push-apple.com.akadns.net</span><br><span class="line">init-p01st.push.apple.com</span><br><span class="line">init-s01st-lb.push-apple.com.akadns.net</span><br><span class="line">init-s01st.push.apple.com</span><br><span class="line">iosapps.itunes.g.aaplimg.com</span><br><span class="line">iphone-ld.apple.com</span><br><span class="line">is1-ssl.mzstatic.com</span><br><span class="line">is1.mzstatic.com</span><br><span class="line">is2-ssl.mzstatic.com</span><br><span class="line">is2.mzstatic.com</span><br><span class="line">is3-ssl.mzstatic.com</span><br><span class="line">is3.mzstatic.com</span><br><span class="line">is4-ssl.mzstatic.com</span><br><span class="line">is4.mzstatic.com</span><br><span class="line">is5-ssl.mzstatic.com</span><br><span class="line">is5.mzstatic.com</span><br><span class="line">itunes-apple.com.akadns.net</span><br><span class="line">itunes.apple.com</span><br><span class="line">itunesconnect.apple.com</span><br><span class="line">mesu-cdn.apple.com.akadns.net</span><br><span class="line">mesu-china.apple.com.akadns.net</span><br><span class="line">mesu.apple.com</span><br><span class="line">music.apple.com</span><br><span class="line">ocsp-lb.apple.com.akadns.net</span><br><span class="line">ocsp.apple.com</span><br><span class="line">oscdn.apple.com</span><br><span class="line">oscdn.origin-apple.com.akadns.net</span><br><span class="line">pancake.apple.com</span><br><span class="line">pancake.cdn-apple.com.akadns.net</span><br><span class="line">phobos.apple.com</span><br><span class="line">prod-support.apple-support.akadns.net</span><br><span class="line">reserve-prime.apple.com</span><br><span class="line">s.mzstatic.com</span><br><span class="line">stocks-sparkline-lb.apple.com.akadns.net</span><br><span class="line">store.apple.com.edgekey.net.globalredir.akadns.net</span><br><span class="line">store.apple.com.edgekey.net</span><br><span class="line">store.apple.com</span><br><span class="line">store.storeimages.apple.com.akadns.net</span><br><span class="line">store.storeimages.cdn-apple.com</span><br><span class="line">support-china.apple-support.akadns.net</span><br><span class="line">support.apple.com</span><br><span class="line">swcatalog-cdn.apple.com.akadns.net</span><br><span class="line">swcatalog.apple.com</span><br><span class="line">swcdn.apple.com</span><br><span class="line">swcdn.g.aaplimg.com</span><br><span class="line">swdist.apple.com.akadns.net</span><br><span class="line">swdist.apple.com</span><br><span class="line">swscan-cdn.apple.com.akadns.net</span><br><span class="line">swscan.apple.com</span><br><span class="line">updates-http.cdn-apple.com.akadns.net</span><br><span class="line">updates-http.cdn-apple.com</span><br><span class="line">valid.apple.com</span><br><span class="line">valid.origin-apple.com.akadns.net</span><br><span class="line">www.apple.com.edgekey.net.globalredir.akadns.net</span><br><span class="line">www.apple.com.edgekey.net</span><br><span class="line">www.apple.com</span><br><span class="line">bing.com.cn</span><br><span class="line">cn.bing.com</span><br><span class="line">cn.bing.net</span><br><span class="line">ditu.live.com</span><br><span class="line">bj1.api.bing.com</span><br><span class="line">emoi-cncdn.bing.com</span><br><span class="line">bitpt.cn</span><br><span class="line">byr.pt</span><br><span class="line">ccfbits.org</span><br><span class="line">et8.org</span><br><span class="line">hdchina.org</span><br><span class="line">hdhome.org</span><br><span class="line">hdsky.me</span><br><span class="line">hudbt.hust.edu.cn</span><br><span class="line">lemonhd.org</span><br><span class="line">m-team.cc</span><br><span class="line">nanyangpt.com</span><br><span class="line">npupt.com</span><br><span class="line">open.cd</span><br><span class="line">ourbits.club</span><br><span class="line">pterclub.com</span><br><span class="line">ptsbao.club</span><br><span class="line">pt.eastgame.org</span><br><span class="line">pt.hd4fans.org</span><br><span class="line">pt.keepfrds.com</span><br><span class="line">pt.nwsuaf6.edu.cn</span><br><span class="line">pt.xauat.edu.cn</span><br><span class="line">springsunday.net</span><br><span class="line">tjupt.org</span><br><span class="line">totheglory.im</span><br><span class="line">www.pthome.net</span><br><span class="line">dbank.com</span><br><span class="line">dbankcdn.com</span><br><span class="line">harmonyos.com</span><br><span class="line">hicloud.com</span><br><span class="line">hihonor.com</span><br><span class="line">honor.cn</span><br><span class="line">huawei.com</span><br><span class="line">huaweicloud.com</span><br><span class="line">vmall.com</span><br><span class="line">vmallres.com</span><br><span class="line">alibabacloud.co.in</span><br><span class="line">alibabacloud.com</span><br><span class="line">alibabacloud.com.au</span><br><span class="line">alibabacloud.com.hk</span><br><span class="line">alibabacloud.com.my</span><br><span class="line">alibabacloud.com.sg</span><br><span class="line">alibabacloud.com.tw</span><br><span class="line">alicloud.com</span><br><span class="line">blizzard.cn</span><br><span class="line">blizzardgames.cn</span><br><span class="line">blzstatic.cn</span><br><span class="line">battlenet.com.cn</span><br><span class="line">bnet.163.com</span><br><span class="line">di.res.netease.com</span><br><span class="line">diablo3.nosdn.127.net</span><br><span class="line">hearthstone.nosdn.127.net</span><br><span class="line">hearthstone.nosdn.127.net</span><br><span class="line">heroes.nos.netease.com</span><br><span class="line">overwatch.nosdn.127.net</span><br><span class="line">sc2.nosdn.127.net</span><br><span class="line">wowchina.com</span><br><span class="line">wow.nosdn.127.net</span><br><span class="line">blz.nosdn.127.net</span><br><span class="line">cn.actual.battle.net</span><br><span class="line">gog.qtlglb.com</span><br><span class="line">gogalaxy.gog-statics.com</span><br><span class="line">menu-static.gog-statics.com</span><br><span class="line">productcard.gog-statics.com</span><br><span class="line">static-login.gog-statics.com</span><br><span class="line">www4-static.gog-statics.com</span><br><span class="line">legendofzelda.cn</span><br><span class="line">legendofzelda.com.cn</span><br><span class="line">miitomo.com.cn</span><br><span class="line">nintendolabo.cn</span><br><span class="line">supersmashbros.cn</span><br><span class="line">supersmashbros.com.cn</span><br><span class="line">xn--mts47c3w9b1qr.cn</span><br><span class="line">mariokart.cn</span><br><span class="line">mariokart.com.cn</span><br><span class="line">supermariobros.com.cn</span><br><span class="line">leagueoflegends.cn</span><br><span class="line">lpl.com.cn</span><br><span class="line">csgo.wmsj.cn</span><br><span class="line">dota2.wmsj.cn</span><br><span class="line">wmsjsteam.com</span><br><span class="line">dl.steam.clngaa.com</span><br><span class="line">dl.steam.ksyna.com</span><br><span class="line">st.dl.bscstorage.net</span><br><span class="line">st.dl.eccdnx.com</span><br><span class="line">st.dl.pinyuncloud.com</span><br><span class="line">steampipe.steamcontent.tnkjmec.com</span><br><span class="line">steampowered.com.8686c.com</span><br><span class="line">steamstatic.com.8686c.com</span><br><span class="line">steamchina.com</span><br><span class="line">uplaypc-s-ubisoft.cdn.ubi.com</span><br><span class="line">xboxlive.cn</span><br><span class="line">researchkit.cn</span><br><span class="line">researchkit.com.cn</span><br><span class="line">beats1.cn</span><br><span class="line">beats1.com.cn</span><br><span class="line">beats2.com.cn</span><br><span class="line">beats4.cn</span><br><span class="line">beatsep.cn</span><br><span class="line">apple-icloud.cn</span><br><span class="line">appleicloud.cn</span><br><span class="line">icloud-apple.cn</span><br><span class="line">icloud.com.cn</span><br><span class="line">icloud.net.cn</span><br><span class="line">icloudapple.cn</span><br><span class="line">apple-itunes.cn</span><br><span class="line">itunes-apple.cn</span><br><span class="line">itunesapple.cn</span><br><span class="line">itunesradio.cn</span><br><span class="line">itunesradio.com.cn</span><br><span class="line">swiftui.cn</span><br><span class="line">swiftui.com.cn</span><br><span class="line">cdnst.net</span><br><span class="line">cellmaps.com</span><br><span class="line">ekahau.cloud</span><br><span class="line">ekahau.com</span><br><span class="line">ookla.com</span><br><span class="line">ooklaserver.net</span><br><span class="line">pingtest.net</span><br><span class="line">speedtest.co</span><br><span class="line">speedtest.net</span><br><span class="line">speedtestcustom.com</span><br><span class="line">webtest.net</span><br><span class="line">swiftui.cn</span><br><span class="line">swiftui.com.cn</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>系统运维</category>
+      </categories>
+      <tags>
+        <tag>Openwrt</tag>
+        <tag>路由器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记一次在 Windows 系统下使用 Tun 模式出现的 Dns 泄露问题</title>
+    <url>//post/002.html</url>
+    <content><![CDATA[<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>在 Windows 系统下,由于系统默认开启了”智能多宿主名称解析”（LLMNR，Link-Local Multicast Name Resolution）,微软引入Windows的加快DNS解析速度的功能，通过在所有可用的网络适配器上发送DNS请求来实现，并自动选择返回速度最快的信息.这里就是最坑的地方了,在 Tun 模式下,会自动创建一个虚拟网卡,按照道理来说,所有的 DNS 请求都会根据这个网卡进行分流,但是由于”智能多宿主名称解析”的功能,会给你系统默认的网卡发送一个 DNS 请求</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="使用组策略编辑器（仅适用于专业版、企业版和教育版）："><a href="#使用组策略编辑器（仅适用于专业版、企业版和教育版）：" class="headerlink" title="使用组策略编辑器（仅适用于专业版、企业版和教育版）："></a>使用组策略编辑器（仅适用于专业版、企业版和教育版）：</h3><p>a. 打开“运行”对话框，可以按下Win + R键，然后输入“gpedit.msc”并按Enter。</p>
+<p>b. 在“组策略编辑器”中，导航至以下路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">计算机配置 -&gt; 管理模板 -&gt; 网络 -&gt; DNS客户端</span><br></pre></td></tr></table></figure>
+
+<p>c. 在右侧窗格中，找到并双击“禁用智能多宿主名称解析”（Turn off Multicast Name Resolution）。</p>
+<p>d. 在弹出的窗口中，选择“已启用”（Enabled），然后点击“确定”。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.itblogcn.com/article/2297.html">https://www.itblogcn.com/article/2297.html</a></p>
+]]></content>
+      <categories>
+        <category>隐私保护</category>
+      </categories>
+      <tags>
+        <tag>隐私保护</tag>
+        <tag>dns</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Firefox for Android 信任系统第三方证书</title>
+    <url>//post/003.html</url>
+    <content><![CDATA[<p>Android 版本的 Firefox 默认不信任系统证书需要按以下步骤开启信任系统证书</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>打开 Firefox for Android</li>
+<li>打开设置-关于 Firefox</li>
+<li>点击七次 Firefox 的 logo 图标解锁 Secret Setting</li>
+<li>返回，然后找到 Secret Setting，开启 Use third party CA certificates</li>
+<li>完成，最好重启 Firefox</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Firefox</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用 clash tunnel 实现内网穿透</title>
+    <url>//post/004.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>对于内网穿透我研究了很久，网上流行的内网穿透方案对于没有 ipv4 地址的我来说都有其缺点。 总结一下，ipv6 穿透需要客户端也支持，兼容性不够高。 Lucky 的 stun 穿透端口号又一直在变，很多服务也并不支持 hook 改端口，更重要的是不够安全，不能配置 tls，信息可能会被第三方监听。 Cloudflare 的 tun 隧道似乎挺完美了，奈何 GFW 对其存在干扰，稳定性不够。 frp 之类的反代方案又取决于服务器的带宽，如果要用 tls 还要备案，很麻烦。</p>
+<p>所以我考虑了安全性使用便捷性想出了这样的方案。 对于我来说，Clash 是必备的工具，所以我打算利用 Clash 的 Tunnel 来转发内网的流量。 也就是说我需要加入一个节点来代理内网里面的流量。对于 stun 穿透端口号一直变的问题， 可以利用 Lucky 的 Webhook 将 ip 和端口号调用接口配置。接下来要做的就是在 Clash 配置定时刷新订阅，或者用 API 调用订阅刷新即可。</p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li>公网服务器，用作 clash 订阅</li>
+<li>内网服务器</li>
+</ul>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="在内网服务器搭建-v2ray-服务器"><a href="#在内网服务器搭建-v2ray-服务器" class="headerlink" title="在内网服务器搭建 v2ray 服务器"></a>在内网服务器搭建 v2ray 服务器</h2><p>主要是用于代理内网的网络，使用 v2ray 是因为配置出入站规则比较灵活，有更高的安全性。 在这里我使用 docker 部署。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">v2ray:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">v2fly/v2fly-core</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">v2ray</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">TZ=Asia/Shanghai</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./config:/etc/v2ray</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;10086:10086&quot;</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&quot;run&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;/etc/v2ray/config.json&quot;</span>]</span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br></pre></td></tr></table></figure>
+
+<p>在当前目录新建一个 config&#x2F;config.json</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;inbounds&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="number">10086</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vmess&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;settings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;clients&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">          <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;28492f21-c626-4309-9d23-c8884194c3ba&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;alterId&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;outbounds&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;freedom&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;blackhole&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;blocked&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;routing&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;rules&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;field&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;outboundTag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;freedom&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;ip&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;192.168.1.88&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="string">&quot;8096&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;field&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;outboundTag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;freedom&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;ip&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;192.168.1.1&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="string">&quot;9090&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;field&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;outboundTag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;blocked&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;ip&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;0.0.0.0/0&quot;</span><span class="punctuation">,</span> <span class="string">&quot;::/0&quot;</span><span class="punctuation">]</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>配置规则只允许指定的 ip 端口号的流量出站，其他流量一律 blocked，然后 <code>docker-compose up -d</code> 启动服务</p>
+<h2 id="部署-clash-订阅服务"><a href="#部署-clash-订阅服务" class="headerlink" title="部署 clash 订阅服务"></a>部署 clash 订阅服务</h2><p>该服务主要用于更新和查看 clash 内网节点的地址，在这里我自己写了一个 Java 服务用于设置和查看 clash 地址。读者可自行编写该接口，将该服务部署到公网服务器。</p>
+<p><img src="/../static/img_13.png" alt="img_13.png"></p>
+<h2 id="在-Lucky-中配置-webhook"><a href="#在-Lucky-中配置-webhook" class="headerlink" title="在 Lucky 中配置 webhook"></a>在 Lucky 中配置 webhook</h2><p>把 v2ray 的服务使用 stun 穿透出去<br><img src="/../static/img_14.png" alt="img_14.png"></p>
+<p>配置 webhook 设置节点的 ip 和端口号</p>
+<p><img src="/../static/img_16.png" alt="img_16.png"></p>
+<p>查询出来的结果应该是这样的</p>
+<p><img src="/../static/img_15.png" alt="img_15.png"></p>
+<h2 id="clash-配置"><a href="#clash-配置" class="headerlink" title="clash 配置"></a>clash 配置</h2><p>在这里我使用了 subconverter 订阅转换，可以方便配置策略组和自定义规则</p>
+<h3 id="配置策略组"><a href="#配置策略组" class="headerlink" title="配置策略组"></a>配置策略组</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">custom_proxy_group=Home`select`家里云`[]DIRECT</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-tunnel"><a href="#配置-tunnel" class="headerlink" title="配置 tunnel"></a>配置 tunnel</h3><p>配置示例：<a href="https://github.com/finalpi/ACL4SSR/blob/master/config_template.yaml">https://github.com/finalpi/ACL4SSR/blob/master/config_template.yaml</a></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 内网穿透</span></span><br><span class="line"><span class="attr">tunnels:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">network:</span> [<span class="string">tcp</span>, <span class="string">udp</span>]</span><br><span class="line">  <span class="attr">address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:13000</span></span><br><span class="line">  <span class="attr">target:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.88</span><span class="string">:8096</span></span><br><span class="line">  <span class="attr">proxy:</span> <span class="string">Home</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">network:</span> [<span class="string">tcp</span>, <span class="string">udp</span>]</span><br><span class="line">  <span class="attr">address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:13001</span></span><br><span class="line">  <span class="attr">target:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.180</span><span class="string">:445</span></span><br><span class="line">  <span class="attr">proxy:</span> <span class="string">Home</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">network:</span> [<span class="string">tcp</span>, <span class="string">udp</span>]</span><br><span class="line">  <span class="attr">address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:13002</span></span><br><span class="line">  <span class="attr">target:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span><span class="string">:9090</span></span><br><span class="line">  <span class="attr">proxy:</span> <span class="string">Home</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">network:</span> [<span class="string">tcp</span>, <span class="string">udp</span>]</span><br><span class="line">  <span class="attr">address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:13003</span></span><br><span class="line">  <span class="attr">target:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.88</span><span class="string">:4533</span></span><br><span class="line">  <span class="attr">proxy:</span> <span class="string">Home</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">network:</span> [<span class="string">tcp</span>, <span class="string">udp</span>]</span><br><span class="line">  <span class="attr">address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:13004</span></span><br><span class="line">  <span class="attr">target:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.88</span><span class="string">:8971</span></span><br><span class="line">  <span class="attr">proxy:</span> <span class="string">Home</span></span><br></pre></td></tr></table></figure>
+
+<p>address 是你本地访问的地址，target 是内网服务的地址。address 的端口号建议配置在 10000 以上，因为 Android 上的 clash 服务开启 10000 以上的端口不需要 root 权限。</p>
+<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>这样只需要配置定时刷新订阅即可很方便又安全的访问内网服务了，并且能跑满带宽上行。</p>
+<p><img src="/../static/img_17.png" alt="img_17.png"></p>
+]]></content>
+      <categories>
+        <category>内网穿透</category>
+      </categories>
+      <tags>
+        <tag>Clash</tag>
+        <tag>Lucky</tag>
+        <tag>内网穿透</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常用 Magisk 模块</title>
+    <url>//post/005.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>整理下我常用的 Magisk 模块，长期更新</p>
+<h1 id="Magisk-模块"><a href="#Magisk-模块" class="headerlink" title="Magisk 模块"></a>Magisk 模块</h1><h2 id="LSPosed"><a href="#LSPosed" class="headerlink" title="LSPosed"></a>LSPosed</h2><p>项目地址：<a href="https://github.com/JingMatrix/LSPosed">https://github.com/JingMatrix/LSPosed</a></p>
+<p>一个 Zygisk 模块，旨在提供一个 ART Hook 框架，该框架利用 LSPlant Hook 框架，提供与 OG Xposed 一致的 API。</p>
+<h2 id="Zygisk-Next"><a href="#Zygisk-Next" class="headerlink" title="Zygisk Next"></a>Zygisk Next</h2><p>项目地址：<a href="https://github.com/Dr-TSNG/ZygiskNext">https://github.com/Dr-TSNG/ZygiskNext</a></p>
+<p>Zygisk 的独立实现，为 KernelSU 提供 Zygisk API 支持，并取代 Magisk 内置的 Zygisk。</p>
+<p>比内置的 Zygisk 有更好的隐藏效果。</p>
+<h2 id="BCR"><a href="#BCR" class="headerlink" title="BCR"></a>BCR</h2><p>项目地址：<a href="https://github.com/chenxiaolong/BCR">https://github.com/chenxiaolong/BCR</a></p>
+<p>BCR 是一个简单的 Android 通话录音应用，适用于已 root 的设备或运行自定义固件的设备。一旦启用，它就会在后台自动记录来电和去电，不会打扰您。</p>
+<p>Android 录音模块，外版系统必备。</p>
+<h2 id="ASGuard"><a href="#ASGuard" class="headerlink" title="ASGuard"></a>ASGuard</h2><p>项目地址：<a href="https://github.com/huzesama/ASGuard">https://github.com/huzesama/ASGuard</a></p>
+<p>Magisk模块，用于安卓的无障碍服务(或名:辅助功能)辅助管理模块 模块自带的四种运行机制(Auto&#x2F;Monitor&#x2F;Focus&#x2F;Refresh)尽可能满足大部分人对无障碍功能需要时就开启，不需要的时候忽视的需求</p>
+<p>保持无障碍开启。</p>
+<h2 id="Sui"><a href="#Sui" class="headerlink" title="Sui"></a>Sui</h2><p>项目地址：<a href="https://github.com/RikkaApps/Sui">https://github.com/RikkaApps/Sui</a></p>
+<p>Sui 为 Root 应用提供 Java API 和 Shizuku API。它主要提供以 Root 身份直接使用安卓 API（几乎是 Java）的能力，并以 Root 身份启动应用自己的 AIDL 风格的 Java 服务。这将使 Root 应用开发变得更加舒适。</p>
+<p>Shizuku 在 Root 设备上的替代品。</p>
+<h2 id="NLSound"><a href="#NLSound" class="headerlink" title="NLSound"></a>NLSound</h2><p>项目地址：<a href="https://github.com/Briclyaz/NLSound_module_QCom">https://github.com/Briclyaz/NLSound_module_QCom</a></p>
+<p>这是一个全面的解决方案，可以全面定制和改善您安卓设备上的音频质量。它对所有音频播放选项（有线耳机、TWS 和蓝牙设备、扬声器）以及音频录制、音频通话等过程中的麦克风都具有积极作用。一个重要特点是该模块对大量设备的极致兼容性。</p>
+<p>装了和没装反正我是没听出什么区别，不过可以改音量步进数还是挺好的。</p>
+<h2 id="PlayIntegrityFix-NEXT"><a href="#PlayIntegrityFix-NEXT" class="headerlink" title="PlayIntegrityFix-NEXT"></a>PlayIntegrityFix-NEXT</h2><p>项目地址：<a href="https://github.com/EricInacio01/PlayIntegrityFix-NEXT">https://github.com/EricInacio01/PlayIntegrityFix-NEXT</a></p>
+<p>PIF 分支。此模块提供实验性实现，以确保在新 PlayIntegrity 规则下进行有效认证。</p>
+<p>配合 TrickyStore 一起使用，过 Play 完整性认证</p>
+<h2 id="TrickyStore"><a href="#TrickyStore" class="headerlink" title="TrickyStore"></a>TrickyStore</h2><p>项目地址：<a href="https://github.com/5ec1cff/TrickyStore">https://github.com/5ec1cff/TrickyStore</a></p>
+<p>此模块用于修改为安卓密钥认证生成的证书链。</p>
+<h2 id="AlwaysTrustUserCerts"><a href="#AlwaysTrustUserCerts" class="headerlink" title="AlwaysTrustUserCerts"></a>AlwaysTrustUserCerts</h2><p>项目地址：<a href="https://github.com/NVISOsecurity/AlwaysTrustUserCerts">https://github.com/NVISOsecurity/AlwaysTrustUserCerts</a></p>
+<p>此模块将所有已安装的用户证书设为系统证书存储区的一部分，因此它们将在构建信任链时自动使用。此模块使得应用程序清单中无需添加 <code>network_security_config</code> 属性。</p>
+<h2 id="ACC"><a href="#ACC" class="headerlink" title="ACC"></a>ACC</h2><p>项目地址：<a href="https://github.com/VR-25/acc">https://github.com/VR-25/acc</a></p>
+<p>ACC 是一款主要旨在延长电池使用寿命的安卓软件。简而言之，这是通过限制充电电流、温度和电压来实现的。支持任何 root 解决方案。无论系统是否使用 KernelSU&#x2F;Magisk 进行 root，安装始终是“systemless”的。</p>
+<p>充电控制模块，延长电池寿命。建议直接安装 <a href="https://github.com/MatteCarra/AccA">ACCA</a> 可视化控制电源选项</p>
+<h2 id="Shamiko"><a href="#Shamiko" class="headerlink" title="Shamiko"></a>Shamiko</h2><p>项目地址：<a href="https://github.com/LSPosed/LSPosed.github.io/releases">https://github.com/LSPosed/LSPosed.github.io/releases</a></p>
+<p>隐藏 Root 痕迹，建议用白名单模式运行</p>
+<h2 id="ZN-AuditPatch"><a href="#ZN-AuditPatch" class="headerlink" title="ZN-AuditPatch"></a>ZN-AuditPatch</h2><p>项目地址：<a href="https://github.com/aviraxp/ZN-AuditPatch">https://github.com/aviraxp/ZN-AuditPatch</a></p>
+<p>替换审计日志中的敏感上下文。</p>
+<p>隐藏 Root 痕迹</p>
+<h2 id="magisk-wifiadb"><a href="#magisk-wifiadb" class="headerlink" title="magisk-wifiadb"></a>magisk-wifiadb</h2><p>项目地址：<a href="https://github.com/mrh929/magisk-wifiadb">https://github.com/mrh929/magisk-wifiadb</a></p>
+<p>使用此模块，您可以始终启用 WiFi ADB，而无需在每次进行 adb 调试之前使用应用程序或在 Android 设置中打开它。</p>
+<p>开机自动启动，再也不用每次重新开机手动打开网络 adb 了。</p>
+<h2 id="CustomPinyinDictionary"><a href="#CustomPinyinDictionary" class="headerlink" title="CustomPinyinDictionary"></a>CustomPinyinDictionary</h2><p>项目地址：<a href="https://github.com/wuhgit/CustomPinyinDictionary">https://github.com/wuhgit/CustomPinyinDictionary</a></p>
+<p>Gboard 词库</p>
+<h2 id="box-for-magisk"><a href="#box-for-magisk" class="headerlink" title="box_for_magisk"></a>box_for_magisk</h2><p>项目地址：<a href="https://github.com/taamarin/box_for_magisk">https://github.com/taamarin/box_for_magisk</a></p>
+<p>Box for Root (BFR) 是一个 Magisk, KernelSU, APatch 模块，提供一套代理工具，包括 clash 、 sing-box 、 v2ray 、 hysteria 和 xray 。它允许你在拥有 Root 权限的安卓设备上配置透明代理。</p>
+<h1 id="LSPosed-模块"><a href="#LSPosed-模块" class="headerlink" title="LSPosed 模块"></a>LSPosed 模块</h1><h2 id="DisableLogRequest"><a href="#DisableLogRequest" class="headerlink" title="DisableLogRequest"></a>DisableLogRequest</h2><p>项目地址：<a href="https://github.com/QueallyTech/DisableLogRequest">https://github.com/QueallyTech/DisableLogRequest</a></p>
+<p>自动批准应用访问设备日志，配合 Kde Connect 实现自动剪贴板同步。</p>
+<h2 id="xposed-clipboard-whitelist"><a href="#xposed-clipboard-whitelist" class="headerlink" title="xposed-clipboard-whitelist"></a>xposed-clipboard-whitelist</h2><p>项目地址：<a href="https://github.com/entr0pia/xposed-clipboard-whitelist">https://github.com/entr0pia/xposed-clipboard-whitelist</a></p>
+<p>允许 KDE Connect 在后台读取剪贴板。</p>
+<h2 id="NekoSMS"><a href="#NekoSMS" class="headerlink" title="NekoSMS"></a>NekoSMS</h2><p>项目地址：<a href="https://github.com/apsun/NekoSMS">https://github.com/apsun/NekoSMS</a></p>
+<p>一个基于模式的安卓短信拦截器。支持正则表达式过滤拦截。</p>
+<h1 id="Root-应用"><a href="#Root-应用" class="headerlink" title="Root 应用"></a>Root 应用</h1><h2 id="Android-DataBackup"><a href="#Android-DataBackup" class="headerlink" title="Android-DataBackup"></a>Android-DataBackup</h2><p>项目地址：<a href="https://github.com/XayahSuSuSu/Android-DataBackup">https://github.com/XayahSuSuSu/Android-DataBackup</a></p>
+<p>适用于 Android 7.0+ 的 APP 数据备份</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Magisk</tag>
+        <tag>Xposed</tag>
+        <tag>模块</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nothing phone2a 刷入 magisk</title>
+    <url>//post/2024-09-06.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近买了一台nothing phone 2a,外观还是很炫酷的,一到手我就忍不住想刷入magisk,在网上搜索了一下,我根据网上的教程成功刷入了magisk,在此记录下方法,以后或许还能用上</p>
+<h1 id="解锁Bootloader"><a href="#解锁Bootloader" class="headerlink" title="解锁Bootloader"></a>解锁Bootloader</h1><ul>
+<li>首先进入设置-关于手机-点击Nothing OS带有版本号最上面的方块,点击版本号7次进入开发者模式.<br><img src="/../static/img_9.png"></li>
+<li>然后在设置-开发者模式中开启OEM解锁以及USB调试功能</li>
+<li>然后在电脑上打开cmd命令,输入<code>adb devices</code>,然后在手机上授权,直到你能在电脑上看见设备列表</li>
+<li>输入命令<code>adb reboot bootloader</code>此时手机重启进入fastboot模式</li>
+<li>然后输入<code>fastboot flashing unlock</code>解锁,此时你的手机会弹出五秒钟的窗口,赶紧按一下音量+键确认解锁.<br>这样就解锁成功了,使用<code>fastboot reboot</code>重启手机</li>
+</ul>
+<h1 id="刷入magisk"><a href="#刷入magisk" class="headerlink" title="刷入magisk"></a>刷入magisk</h1><ul>
+<li><p>下载安装<a href="https://github.com/topjohnwu/Magisk">magisk</a>的apk</p>
+</li>
+<li><p>下载和你的版本号对应的<a href="https://github.com/spike0en/Pacman_Archive">nothing phone2a的镜像</a>,记住是-boot结尾的镜像,例如<code>Pacman_U2.6-240828-1906-image-boot.7z</code></p>
+</li>
+<li><p>解压出镜像中的<code>init_boot.img</code>文件,将其复制到手机,然后打开你安装好的magisk应用,选择Magisk-Install-Select and Patch a File(中文应该是叫修补镜像文件),等待修补完毕,会生成一个文件,文件名类似于<code>magisk_patched-27007_83BSg.img</code>,把这个文件复制到你的电脑上,接着就正式开始刷入magisk了</p>
+</li>
+<li><p>先用adb连接上手机,输入命令<code>adb redboot bootloader</code>进入fastboot模式</p>
+</li>
+<li><p>接着刷入a,b盘的引导,记得把路径替换为你传到电脑上的magisk引导镜像的路径,在cmd运行</p>
+</li>
+</ul>
+<p><code>fastboot flash init_boot_a C:\Users\XXXXXX\Desktop\magisk_patched-27007_83BSg.img</code><br>和<br><code>fastboot flash init_boot_b C:\Users\XXXXXX\Desktop\magisk_patched-27007_83BSg.img</code></p>
+<ul>
+<li>执行完这两个命令后重启手机 <code>fastboot reboot</code><br><img src="/../static/img_10.png"></li>
+<li>这样就刷进去了magisk</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>magisk</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用Lucky的WebHook实现Stun的伪DDNS(重定向)</title>
+    <url>//post/fakeddns-1.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>总所周知,通过STUN进行内网穿透之后,对于不同变化的ip和端口,会感到很头疼.</p>
+<p>解决的方案一般是通过将lucky用反向代理到公网服务器,然后进入管理后台查看stun的地址</p>
+<p>最近我看到一篇不错的文章,思路是通过域名的重定向功能配合lucky的webhook调用服务商的api设置重定向地址以达到伪DDNS的功能</p>
+<p>这里一般可以用Cloudflare和YOURLS两个方式实现,以下记录了我用Cloudflare的实现方式</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步:"></a>第一步:</h2><p>首先将域名绑定到Cloudflare,设置nameserver</p>
+<img src="../static/img.png">
+
+<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步:"></a>第二步:</h2><p>进入<code>Rules-&gt;Page Rules</code>设置重定向规则</p>
+<img src="../static/img_1.png">
+
+<h2 id="第三步"><a href="#第三步" class="headerlink" title="第三步:"></a>第三步:</h2><p>创建规则,url填入<code>test.yourdomain.com/*</code>,域名根据你自己的域名去修改,setting选择<code>Forwarding URL</code>,code为<code>301</code>,</p>
+<p>跳转的url我们暂时填入<code>http://192.168.31.1:5209/$1</code>,这里的地址我们后面要用webhook去修改</p>
+<img src="../static/img_2.png">
+
+<h2 id="第四步"><a href="#第四步" class="headerlink" title="第四步:"></a>第四步:</h2><p>编辑lucky中的stun穿透中你需要做跳转的规则:</p>
+<p>接口地址填入Cloudflare的api地址:<code>https://api.cloudflare.com/client/v4/zones/&#123;zones&#125;/pagerules/&#123;pagerules&#125;</code>其中zones和pagerules可以用F12在Cloudflare修改的时候拿到</p>
+<p>请求方法选择PUT</p>
+<p>请求头填入Cloudflare的账号和你创建的token:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">X-Auth-Email: </span><br><span class="line">X-Auth-Key: </span><br></pre></td></tr></table></figure>
+<p>请求主体替换你的域名</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;targets&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;target&quot;</span><span class="punctuation">:</span> <span class="string">&quot;url&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;constraint&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;operator&quot;</span><span class="punctuation">:</span> <span class="string">&quot;matches&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你的域名/*&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;actions&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;forwarding_url&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://#&#123;ipAddr&#125;/$1&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;status_code&quot;</span><span class="punctuation">:</span> <span class="number">301</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;priority&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;status&quot;</span><span class="punctuation">:</span> <span class="string">&quot;active&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<img src="../static/img_3.png">
+
+<p>这样我们就完成了伪DDNS</p>
+]]></content>
+      <categories>
+        <category>内网穿透</category>
+      </categories>
+      <tags>
+        <tag>内网穿透</tag>
+        <tag>Cloudflare</tag>
+        <tag>lucky</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Apache POI使用</title>
+    <url>//post/apache-poi.html</url>
+    <content><![CDATA[<h1 id="Apache-POI简介"><a href="#Apache-POI简介" class="headerlink" title="Apache POI简介"></a>Apache POI简介</h1><p>Apache POI是一个用Java编写的跨平台的免费开源的Java API。它提供了一组API，使Java程序能够读取和写入Microsoft Office格式档案。其中读写Excel文件的功能应用最为广泛。除此之外，还有一个专门操作Excel的工具包jxl。</p>
+<h1 id="导入maven依赖"><a href="#导入maven依赖" class="headerlink" title="导入maven依赖"></a>导入maven依赖</h1><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.14<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi-ooxml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.14<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="POI的结构"><a href="#POI的结构" class="headerlink" title="POI的结构"></a>POI的结构</h1><ul>
+<li>HSSF：提供读写Microsoft Excel XLS格式档案的功能（97-2003）</li>
+<li>XSSF：提供读写Microsoft Excel OOXML XLSX格式档案的功能（2007及以上版本）</li>
+<li>HWPF：提供读写Microsoft Word DOC格式档案的功能</li>
+<li>HSLF：提供读写Microsoft PowerPoint格式档案的功能</li>
+<li>HDGF：提供读Microsoft Visio格式档案的功能（建模&#x2F;画图）</li>
+<li>HPBF：提供读Microsoft Publisher格式档案的功能 </li>
+<li>HSMF：提供读Microsoft Outlook格式档案的功能（邮件）</li>
+</ul>
+<h1 id="读取Excel文件"><a href="#读取Excel文件" class="headerlink" title="读取Excel文件"></a>读取Excel文件</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">readExcel</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="comment">// 1、创建工作簿对象</span></span><br><span class="line">    <span class="type">XSSFWorkbook</span> <span class="variable">workbook</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">XSSFWorkbook</span>(<span class="string">&quot;G:/hello.xlsx&quot;</span>);</span><br><span class="line">    <span class="comment">// 2、获得工作表对象</span></span><br><span class="line">    <span class="type">XSSFSheet</span> <span class="variable">sheet</span> <span class="operator">=</span> workbook.getSheetAt(<span class="number">0</span>);</span><br><span class="line">    <span class="comment">// 3、遍历工作表，获得行对象</span></span><br><span class="line">    <span class="keyword">for</span> (Row row : sheet) &#123;</span><br><span class="line">        <span class="comment">// 4、遍历行对象，获得列对象</span></span><br><span class="line">        <span class="keyword">for</span> (Cell cell : row) &#123;</span><br><span class="line">            <span class="comment">// 5、获得列里面的内容</span></span><br><span class="line">            System.out.println(cell.getStringCellValue());</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;------------&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 6、关闭工作簿</span></span><br><span class="line">     workbook.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="写入Excel文件"><a href="#写入Excel文件" class="headerlink" title="写入Excel文件"></a>写入Excel文件</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">writeExcel</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="comment">// 1、创建工作簿对象</span></span><br><span class="line">    <span class="type">XSSFWorkbook</span> <span class="variable">workbook</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">XSSFWorkbook</span>();</span><br><span class="line">    <span class="comment">// 2、创建工作表对象</span></span><br><span class="line">    <span class="type">XSSFSheet</span> <span class="variable">xssfSheet</span> <span class="operator">=</span> workbook.createSheet(<span class="string">&quot;学生名单&quot;</span>);</span><br><span class="line">    <span class="comment">// 3、创建行</span></span><br><span class="line">    <span class="type">XSSFRow</span> <span class="variable">row01</span> <span class="operator">=</span> xssfSheet.createRow(<span class="number">0</span>);</span><br><span class="line">    <span class="comment">// 4、创建列并设置内容</span></span><br><span class="line">    row01.createCell(<span class="number">0</span>).setCellValue(<span class="string">&quot;姓名&quot;</span>);</span><br><span class="line">    row01.createCell(<span class="number">1</span>).setCellValue(<span class="string">&quot;性别&quot;</span>);</span><br><span class="line">    row01.createCell(<span class="number">2</span>).setCellValue(<span class="string">&quot;地址&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">XSSFRow</span> <span class="variable">row02</span> <span class="operator">=</span> xssfSheet.createRow(<span class="number">1</span>);</span><br><span class="line">    row02.createCell(<span class="number">0</span>).setCellValue(<span class="string">&quot;张三&quot;</span>);</span><br><span class="line">    row02.createCell(<span class="number">1</span>).setCellValue(<span class="string">&quot;男&quot;</span>);</span><br><span class="line">    row02.createCell(<span class="number">2</span>).setCellValue(<span class="string">&quot;深圳&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">XSSFRow</span> <span class="variable">row03</span> <span class="operator">=</span> xssfSheet.createRow(<span class="number">2</span>);</span><br><span class="line">    row03.createCell(<span class="number">0</span>).setCellValue(<span class="string">&quot;李四&quot;</span>);</span><br><span class="line">    row03.createCell(<span class="number">1</span>).setCellValue(<span class="string">&quot;男&quot;</span>);</span><br><span class="line">    row03.createCell(<span class="number">2</span>).setCellValue(<span class="string">&quot;北京&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 5、通过输出流写入磁盘</span></span><br><span class="line">    <span class="type">FileOutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;G:/student.xlsx&quot;</span>);</span><br><span class="line">    workbook.write(os);</span><br><span class="line">    os.flush();</span><br><span class="line">    os.close();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 6、关闭工作簿</span></span><br><span class="line">    workbook.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Apache POI</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FRP的使用</title>
+    <url>//post/frp.html</url>
+    <content><![CDATA[<p>首先下载你系统对应内核的frp的压缩包,下载地址:<a href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a></p>
+<h1 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h1><h2 id="1-将压缩包上传到服务器"><a href="#1-将压缩包上传到服务器" class="headerlink" title="1.将压缩包上传到服务器"></a>1.将压缩包上传到服务器</h2><h2 id="2-解压压缩包"><a href="#2-解压压缩包" class="headerlink" title="2.解压压缩包"></a>2.解压压缩包</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar -zxvf frp_0.51.0_linux_amd64.tar.gz </span><br></pre></td></tr></table></figure>
+<h2 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3.修改配置文件"></a>3.修改配置文件</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd frp_0.51.0_linux_amd64</span><br><span class="line">vi frps.ini</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">服务端端口号</span></span><br><span class="line">bind_port = 7000</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">dashboard设置</span></span><br><span class="line">dashboard_addr = 0.0.0.0</span><br><span class="line">dashborard_user = admin</span><br><span class="line">dashboard_pwd = 123456</span><br><span class="line">dashboard_port = 7501</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">连接使用的token</span></span><br><span class="line">token = 123456</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">日志输出，可以设置为具体的日志文件或者console</span></span><br><span class="line">log_file = /home/frp_0.44.0_linux_amd64/frps.log</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">日志记录等级，有trace, debug, info, warn, error</span></span><br><span class="line">log_level = info</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">日志保留时间</span></span><br><span class="line">log_max_days = 7</span><br></pre></td></tr></table></figure>
+<h2 id="4-运行服务端"><a href="#4-运行服务端" class="headerlink" title="4.运行服务端"></a>4.运行服务端</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">./frps -c ./frps.ini</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s1.imagehub.cc/images/2023/07/07/image9d1fb297f9126db0.png"></p>
+<h1 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h1><h2 id="1-下载压缩包"><a href="#1-下载压缩包" class="headerlink" title="1.下载压缩包"></a>1.下载压缩包</h2><p>参照以上步骤1和步骤2,将压缩包解压</p>
+<h2 id="2-修改配置文件"><a href="#2-修改配置文件" class="headerlink" title="2.修改配置文件"></a>2.修改配置文件</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd frp_0.51.0_linux_amd64</span><br><span class="line">vi frpc.ini</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">服务端ip和端口号</span></span><br><span class="line">server_addr = 192.168.1.38</span><br><span class="line">server_port = 7000</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">token要和服务端保持一致</span></span><br><span class="line">token = 123456</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">以下是需要代理的服务</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">服务名称</span></span><br><span class="line">[ssh1]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">协议类型</span></span><br><span class="line">type = tcp</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">本地ip</span></span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">本地端口号</span></span><br><span class="line">local_port = 22</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">远程端口号</span></span><br><span class="line">remote_port = 37001</span><br><span class="line"></span><br><span class="line">[filerun]</span><br><span class="line">type = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 11199</span><br><span class="line">remote_port = 37002</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-运行客户端"><a href="#3-运行客户端" class="headerlink" title="3.运行客户端"></a>3.运行客户端</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">./frpc -c ./frpc.ini</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>内网穿透</category>
+      </categories>
+      <tags>
+        <tag>FRP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于NAT1的内网穿透方案的实现</title>
+    <url>//post/intranet-penetration-1.html</url>
+    <content><![CDATA[<p>因为搬家,导致ISP给我分配的IPV4公网地址没有了,因此我开始在网上寻找其他的内网穿透方案。使用过FRP以及基于IPV6的内网穿透方案,要么就是速度实在是太慢,要么就是需要的前置条件太多,最近在研究bt打洞的过程给了我穿透的灵感,我就去网上搜索了一下,果然有相关的穿透方案,以下就是我整理的一些方案的实现。</p>
+<h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>此方案需要你的网络环境为<strong>NAT1(Full cone NAT)</strong>  </p>
+<p>STUN的穿透工具有很多,例如<a href="https://github.com/MikeWang000000/Natter">Natter</a>、<a href="https://github.com/heiher/natmap">NATMap</a>、<a href="https://github.com/gdy666/lucky">Lucky</a>,在这里我以Natter和Lucky为例,实现STUN的穿透</p>
+<h1 id="防火墙规则"><a href="#防火墙规则" class="headerlink" title="防火墙规则"></a>防火墙规则</h1><p>使用端口转发或者DMZ开放需要打洞的端口,在这里我使用类似DMZ的方式,编辑<code>/etc/config/firewall</code>文件,添加以下配置到末尾,将其中的ip替换为你的:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">config redirect                   </span><br><span class="line">        option target &#x27;DNAT&#x27;         </span><br><span class="line">        option src &#x27;wan&#x27;          </span><br><span class="line">        option dest &#x27;lan&#x27;    </span><br><span class="line">        option proto &#x27;tcp udp&#x27;</span><br><span class="line">        option src_dport &#x27;1-65535&#x27;</span><br><span class="line">        option dest_ip &#x27;192.168.1.38&#x27;</span><br><span class="line">        option dest_port &#x27;1-65535&#x27;   </span><br><span class="line">        option name &#x27;Forward&#x27; </span><br></pre></td></tr></table></figure>
+<h1 id="运行脚本"><a href="#运行脚本" class="headerlink" title="运行脚本"></a>运行脚本</h1><p>将natter仓库中的python文件克隆到本地,然后使用以下命令运行:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python natter.py -t 3456</span><br></pre></td></tr></table></figure>
+
+<p>如果你防火墙规则设置正确,并且你的网络环境为NAT1,那么你应该会看到以下结果</p>
+<p><img src="https://s1.imagehub.cc/images/2023/07/06/imageedc94ca63502f215.png"></p>
+<p>访问<code>http://xxx.xxx.xxx.xxx:1163</code></p>
+<p>出现这样的页面说明穿透成功了<br><img src="https://s1.imagehub.cc/images/2023/07/06/image7e22b92184491d83.png"></p>
+<p>接下来你就可以转发你想穿透出去的端口了</p>
+<p>比如我想把80端口穿透出去那么就去掉<code>-t</code>,输入以下命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python natter.py 80</span><br></pre></td></tr></table></figure>
+
+<h1 id="使用Lucky-推荐"><a href="#使用Lucky-推荐" class="headerlink" title="使用Lucky(推荐)"></a>使用<a href="https://github.com/gdy666/lucky">Lucky</a>(推荐)</h1><p>Lucky这个工具集成了DDNS,STUN,端口映射等功能,还能自动开放防火墙的端口,部署的过程请参考官方文档  </p>
+<p>在STUN内网穿透中,我们可以很方便的添加我们想要STUN出去的端口</p>
+<p><img src="https://s1.imagehub.cc/images/2023/07/06/imagefa4dab9290fb1e6f.png"></p>
+]]></content>
+      <categories>
+        <category>内网穿透</category>
+      </categories>
+      <tags>
+        <tag>内网穿透</tag>
+        <tag>lucky</tag>
+        <tag>natter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用ip2region获取用户所在地理位置信息</title>
+    <url>//post/java-1.html</url>
+    <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>最近有个项目,需要根据当前的地理位置获取天气信息.因为这个是一个web端的项目,没有办法根据移动端的定位去获取地理位置的信息,所以在此记录下如何根据请求的ip地址获取地理位置信息,在google搜索问题的时候发现一个不错的解决方案,用到的是<a href="%5Bhttps://github.com/lionsoul2014/ip2region">Ip2region</a>这个项目</p>
+<h1 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h1><p>根据官方文档的描述,我们需要先引入依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.lionsoul<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>ip2region<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h1><p>下载xdb文件到本地 <a href="https://github.com/lionsoul2014/ip2region/blob/master/data/ip2region.xdb">ip2region.xdb</a>,我将这个文件放在了resource目录</p>
+<p><img src="https://s1.imagehub.cc/images/2023/06/20/image.png"></p>
+<h1 id="根据IP查询地址信息"><a href="#根据IP查询地址信息" class="headerlink" title="根据IP查询地址信息"></a>根据IP查询地址信息</h1><p>参考官方文档,有三种方式可以查询所属的地址信息分别为:完全基于文件的查询、缓存 <code>VectorIndex</code> 索引、缓存整个 <code>xdb</code> 数据，在此我选择的是第二种，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getRegion</span><span class="params">(String ip)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">in</span> <span class="operator">=</span> IPUtils.class.getClassLoader().getResourceAsStream(<span class="string">&quot;ip2region.xdb&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;ip2region.xdb&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> (<span class="type">OutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(file)) &#123;</span><br><span class="line">            <span class="type">int</span> read;</span><br><span class="line">            <span class="type">byte</span>[] bytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> ((read = in.read(bytes)) != -<span class="number">1</span>) &#123;</span><br><span class="line">                outputStream.write(bytes, <span class="number">0</span>, read);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">dbPath</span> <span class="operator">=</span> file.getAbsolutePath();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1、从 dbPath 中预先加载 VectorIndex 缓存，并且把这个得到的数据作为全局变量，后续反复使用。</span></span><br><span class="line">        <span class="type">byte</span>[] vIndex;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            vIndex = Searcher.loadVectorIndexFromFile(dbPath);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、使用全局的 vIndex 创建带 VectorIndex 缓存的查询对象。</span></span><br><span class="line">        Searcher searcher;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            searcher = Searcher.newWithVectorIndex(dbPath, vIndex);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3、查询</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">region</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            region = searcher.search(ip);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4、关闭资源</span></span><br><span class="line">        searcher.close();</span><br><span class="line">        <span class="keyword">return</span> region;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="开发过程中遇到的坑"><a href="#开发过程中遇到的坑" class="headerlink" title="开发过程中遇到的坑"></a>开发过程中遇到的坑</h1><h2 id="使用HttpServletRequest获取用户的IP地址"><a href="#使用HttpServletRequest获取用户的IP地址" class="headerlink" title="使用HttpServletRequest获取用户的IP地址"></a>使用<code>HttpServletRequest</code>获取用户的IP地址</h2><p>在使用<code>HttpServletRequest</code>获取IP地址的过程中,如果是通过内网访问,或者用了Nginx、FRP等方式反向代理会导致<code>request.getRemoteAddr()</code>方法拿到的是内网地址,并非真实的用户ip,所以我们需要根据header去判断是否经过了反向代理</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getRealIP</span><span class="params">(HttpServletRequest request)</span>&#123;</span><br><span class="line">        <span class="comment">// 获取客户端ip地址</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">clientIp</span> <span class="operator">=</span> request.getHeader(<span class="string">&quot;x-forwarded-for&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (clientIp == <span class="literal">null</span> || clientIp.length() == <span class="number">0</span> || <span class="string">&quot;unknown&quot;</span>.equalsIgnoreCase(clientIp)) &#123;</span><br><span class="line">            clientIp = request.getRemoteAddr();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        String[] clientIps = clientIp.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span>(clientIps.length &lt;= <span class="number">1</span>) <span class="keyword">return</span> clientIp.trim();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> clientIps[clientIps.length-<span class="number">1</span>].trim();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>部署项目最好还是部署在公网服务器上,内网服务器上部署是无法拿到用户的真实ip的</strong></p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>IP</tag>
+        <tag>HttpServletRequest</tag>
+        <tag>ip2region</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java.security.InvalidKeyException:Illegal key size解决方案</title>
+    <url>//post/java-error1.html</url>
+    <content><![CDATA[<h2 id="产生错误原因"><a href="#产生错误原因" class="headerlink" title="产生错误原因"></a>产生错误原因</h2><p>为了数据代码在传输过程中的安全，很多时候我们都会将要传输的数据进行加密，然后等对方拿到后再解密使用。我们在使用AES加解密的时候，在遇到128位密钥加解密的时候，没有进行什么特殊处理；然而，在使用256位密钥加解密的时候，如果不进行特殊处理的话，往往会出现这个异常</p>
+<h2 id="为什么会产生这样的错误"><a href="#为什么会产生这样的错误" class="headerlink" title="为什么会产生这样的错误"></a>为什么会产生这样的错误</h2><p>我们做Java开发，或是Android开发，都会先在电脑上安装JDK(Java Development Kit) 并配置环境变量，JDK也就是 Java 语言的软件开发工具包，JDK中包含有JRE（Java Runtime Environment，即：Java运行环境），JRE中包括Java虚拟机（Java Virtual Machine）、Java核心类库和支持文件，而我们今天要说的主角就在Java的核心类库中。在Java的核心类库中有一个JCE（Java Cryptography Extension），JCE是一组包，它们提供用于加密、密钥生成和协商以及 Message Authentication Code（MAC）算法的框架和实现，所以这个是实现加密解密的重要类库。</p>
+<p>在我们安装的JRE目录下有这样一个文件夹：</p>
+<p><code>%JAVE_HOME%\jre\lib\security</code></p>
+<p>（<code>%JAVE_HOME%</code>是自己电脑的Java路径，一版默认是：<code>C:\Program Files\Java</code>，具体看自己当时安装JDK和JRE时选择的路径是什么），其中包含有两个.jar文件：<code>local_policy.jar</code> 和<code>US_export_policy.jar</code>，也就是我们平时说的jar包，再通俗一点说就是Java中包含的类库（Sun公司的程序大牛封装的类库，供使用Java开发的程序员使用），这两个jar包就是我们JCE中的核心类库了。JRE中自带的<code>local_policy.jar </code>和<code>US_export_policy.jar</code>是支持128位密钥的加密算法，而当我们要使用256位密钥算法的时候，已经超出它的范围，无法支持，所以才会报：<code>java.security.InvalidKeyException: Illegal key size or default parameters</code>的异常</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>去官方下载JCE无限制权限策略文件</p>
+<h3 id="1-8-0-151以上版本的解决方案"><a href="#1-8-0-151以上版本的解决方案" class="headerlink" title="1.8.0_151以上版本的解决方案"></a>1.8.0_151以上版本的解决方案</h3><p>JDK1.8.0_151无需去官网下载 <code>local_policy.jar</code> <code>US_export_policy.jar</code>这个jar包，只需要修改<code>Java\jdk1.8.0_151\jre\lib\security</code>这目录下的<code>java.security</code>文件配置即可</p>
+<p>默认情况下，您应该能找到一条注释掉的行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#crypto.policy=unlimited</span></span><br></pre></td></tr></table></figure>
+
+<p>您可以通过取消注释该行来启用无限制，删除<code>＃</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">crypto.policy=unlimited</span><br></pre></td></tr></table></figure>
+
+<p>现在重新启动指向JVM的Java应用程序即可</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>报错</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>编译lede固件</title>
+    <url>//post/make-lede.html</url>
+    <content><![CDATA[<h1 id="编译LEDE固件和遇到的坑"><a href="#编译LEDE固件和遇到的坑" class="headerlink" title="编译LEDE固件和遇到的坑"></a>编译LEDE固件和遇到的坑</h1><p><strong>注意:不要使用root账号编译,不然会有各种各样的问题</strong></p>
+<p>安装的系统以debian为例</p>
+<p>1.安装依赖</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update -y</span><br><span class="line">sudo apt full-upgrade -y</span><br><span class="line">sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \</span><br><span class="line">bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \</span><br><span class="line">git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \</span><br><span class="line">libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \</span><br><span class="line">mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pip libpython3-dev qemu-utils \</span><br><span class="line">rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev</span><br></pre></td></tr></table></figure>
+
+<p>2.下载源码更新feeds</p>
+<p>这里我推荐自己使用的feeds源</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/coolsnowwolf/lede</span><br><span class="line">cd lede</span><br><span class="line">vi feeds.conf.default </span><br></pre></td></tr></table></figure>
+
+<p>将以下源替换进去</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src-git packages https://github.com/coolsnowwolf/packages</span><br><span class="line">src-git luci https://github.com/coolsnowwolf/luci</span><br><span class="line">src-git routing https://github.com/coolsnowwolf/routing</span><br><span class="line">src-git telephony https://git.openwrt.org/feed/telephony.git</span><br><span class="line">#src-git video https://github.com/openwrt/video.git</span><br><span class="line">#src-git targets https://github.com/openwrt/targets.git</span><br><span class="line">#src-git oldpackages http://git.openwrt.org/packages.git</span><br><span class="line">#src-link custom /usr/src/openwrt/custom-feed</span><br><span class="line">src-git kenzo https://github.com/kenzok8/openwrt-packages</span><br><span class="line">src-git small https://github.com/kenzok8/small</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">./scripts/feeds update -a</span><br><span class="line">./scripts/feeds install -a</span><br><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
+
+<p>3.配置编译需要的插件</p>
+<p>在此选择你需要的luci插件以及你的路由器型号和系统内核,详见官方文档不再赘述</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">make download -j8</span><br><span class="line">make V=s -j1</span><br></pre></td></tr></table></figure>
+
+<h2 id="需要注意的点"><a href="#需要注意的点" class="headerlink" title="需要注意的点"></a>需要注意的点</h2><p>每次编译后推荐</p>
+<p><code>rm -rf ./tmp</code></p>
+]]></content>
+      <categories>
+        <category>系统运维</category>
+      </categories>
+      <tags>
+        <tag>LEDE</tag>
+        <tag>LINUX</tag>
+        <tag>openwrt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql按周查询跨年问题</title>
+    <url>//post/mysql-error1.html</url>
+    <content><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>转眼今天已经到2023年了,我突然发现之前写的代码在处理按周分组查询的时候出现了问题</p>
+<p>原本的按周分组查询是使用:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> DATE_FORMAT(start_time,<span class="string">&#x27;%Y%u&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>使用这种写法后我发现在mysql中2023-01-01竟然是算作2023年的第0周,原本应该算作2022年的第52周</p>
+<h1 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h1><p>后面经过查询资料发现将<code>%Y%u</code>换成<code>%x%v</code>就行了</p>
+<p>代码如下:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> DATE_FORMAT(start_time,<span class="string">&#x27;%x%v&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>完美解决!</p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p>格式转换一览表</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%a</td>
+<td>缩写星期名</td>
+</tr>
+<tr>
+<td>%b</td>
+<td>缩写月名</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>月，数值</td>
+</tr>
+<tr>
+<td>%D</td>
+<td>带有英文前缀的月中的天</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>月的天，数值(00-31)</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>月的天，数值(0-31)</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>微秒</td>
+</tr>
+<tr>
+<td>%H</td>
+<td>小时 (00-23)</td>
+</tr>
+<tr>
+<td>%h</td>
+<td>小时 (01-12)</td>
+</tr>
+<tr>
+<td>%I</td>
+<td>小时 (01-12)</td>
+</tr>
+<tr>
+<td>%i</td>
+<td>分钟，数值(00-59)</td>
+</tr>
+<tr>
+<td>%j</td>
+<td>年的天 (001-366)</td>
+</tr>
+<tr>
+<td>%k</td>
+<td>小时 (0-23)</td>
+</tr>
+<tr>
+<td>%l</td>
+<td>小时 (1-12)</td>
+</tr>
+<tr>
+<td>%M</td>
+<td>月名</td>
+</tr>
+<tr>
+<td>%m</td>
+<td>月，数值(00-12)</td>
+</tr>
+<tr>
+<td>%p</td>
+<td>AM 或 PM</td>
+</tr>
+<tr>
+<td>%r</td>
+<td>时间，12-小时（hh:mm:ss AM 或 PM）</td>
+</tr>
+<tr>
+<td>%S</td>
+<td>秒(00-59)</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>秒(00-59)</td>
+</tr>
+<tr>
+<td>%T</td>
+<td>时间, 24-小时 (hh:mm:ss)</td>
+</tr>
+<tr>
+<td>%U</td>
+<td>周 (00-53) 星期日是一周的第一天</td>
+</tr>
+<tr>
+<td>%u</td>
+<td>周 (00-53) 星期一是一周的第一天</td>
+</tr>
+<tr>
+<td>%V</td>
+<td>周 (01-53) 星期日是一周的第一天，与 %X 使用</td>
+</tr>
+<tr>
+<td>%v</td>
+<td>周 (01-53) 星期一是一周的第一天，与 %x 使用</td>
+</tr>
+<tr>
+<td>%W</td>
+<td>星期名</td>
+</tr>
+<tr>
+<td>%w</td>
+<td>周的天 （0&#x3D;星期日, 6&#x3D;星期六）</td>
+</tr>
+<tr>
+<td>%X</td>
+<td>年，其中的星期日是周的第一天，4 位，与 %V 使用</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>年，其中的星期一是周的第一天，4 位，与 %v 使用</td>
+</tr>
+<tr>
+<td>%Y</td>
+<td>年，4 位</td>
+</tr>
+<tr>
+<td>%y</td>
+<td>年，2 位</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Mysql</category>
+      </categories>
+      <tags>
+        <tag>Mysql</tag>
+        <tag>跨年</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用U盘扩容openwrt的根目录</title>
+    <url>//post/openwrt-1.html</url>
+    <content><![CDATA[<h2 id="1-格式化U盘为Ext4的格式"><a href="#1-格式化U盘为Ext4的格式" class="headerlink" title="1.格式化U盘为Ext4的格式"></a>1.格式化U盘为Ext4的格式</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkfs.ext4 /dev/sda1</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-执行以下命令将原根目录的文件拷贝到u盘"><a href="#2-执行以下命令将原根目录的文件拷贝到u盘" class="headerlink" title="2.执行以下命令将原根目录的文件拷贝到u盘"></a>2.执行以下命令将原根目录的文件拷贝到u盘</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p /tmp/introot</span><br><span class="line">mkdir -p /tmp/extroot</span><br><span class="line">mount --bind / /tmp/introot</span><br><span class="line">mount /dev/sda1 /tmp/extroot</span><br><span class="line">tar -C /tmp/introot -cvf - . | tar -C /tmp/extroot -xf -</span><br><span class="line">umount /tmp/introot</span><br><span class="line">umount /tmp/extroot</span><br></pre></td></tr></table></figure>
+<h2 id="3-使用blkid命令来查看sda1的UUID-结果如下"><a href="#3-使用blkid命令来查看sda1的UUID-结果如下" class="headerlink" title="3.使用blkid命令来查看sda1的UUID,结果如下:"></a>3.使用<code>blkid</code>命令来查看sda1的UUID,结果如下:</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">/dev/mtdblock5: TYPE=&quot;squashfs&quot;</span><br><span class="line">/dev/sda1: UUID=&quot;c91d06ce-8781-4255-b635-610bd6beef7e&quot; TYPE=&quot;ext4&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="4-修改-etc-config-fstab文件"><a href="#4-修改-etc-config-fstab文件" class="headerlink" title="4.修改/etc/config/fstab文件"></a>4.修改<code>/etc/config/fstab</code>文件</h2><p>将以下配置拷贝到文件末尾,uuid替换为你自己的uuid</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">config &#x27;mount&#x27;</span><br><span class="line">         option  target  &#x27;/&#x27;</span><br><span class="line">         option  uuid    &#x27;c91d06ce-8781-4255-b635-610bd6beef7e&#x27;         </span><br><span class="line">         option  enabled &#x27;1&#x27;</span><br></pre></td></tr></table></figure>
+<h2 id="5-使用reboot命令重启openwrt系统"><a href="#5-使用reboot命令重启openwrt系统" class="headerlink" title="5.使用reboot命令重启openwrt系统"></a>5.使用<code>reboot</code>命令重启openwrt系统</h2>]]></content>
+      <categories>
+        <category>系统运维</category>
+      </categories>
+      <tags>
+        <tag>LINUX</tag>
+        <tag>openwrt</tag>
+        <tag>扩容</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决Cloudflare的Tunnel频繁掉线的问题</title>
+    <url>//post/post_001.html</url>
+    <content><![CDATA[<p>用 Cloudflare 的 tunnel 的时候经常会遇到频繁掉线的问题,原因是 GFW 对 QUIC 协议进行了干扰，而 Cloudflare 默认使用 QUIC协议，可以切换为 http2 协议解决这个问题:</p>
+<h1 id="添加-protocol-http2参数"><a href="#添加-protocol-http2参数" class="headerlink" title="添加--protocol http2参数"></a>添加<code>--protocol http2</code>参数</h1><p>修改Cloudflare的启动脚本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/systemd/system/cloudflared.service </span><br></pre></td></tr></table></figure>
+
+<p>在ExecStart加上 <code>--protocol http2</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ExecStart=/usr/bin/cloudflared --protocol http2 --no-autoupdate tunnel run --token ***</span><br></pre></td></tr></table></figure>
+
+<p>然后重新运行服务即可</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl restart cloudflared</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>系统运维</category>
+      </categories>
+      <tags>
+        <tag>内网穿透</tag>
+        <tag>Cloudflare</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows使用非445端口的SMB服务</title>
+    <url>//post/smb-1.html</url>
+    <content><![CDATA[<h2 id="场景描述"><a href="#场景描述" class="headerlink" title="场景描述"></a>场景描述</h2><p>ISP默认禁用了445端口、80端口、443端口,这就导致我们想使用smb服务只能部署在其它端口上。但是因为windows的smb服务不支持其他自定义的端口,因此我们可以使用windows自带的端口转发功能，将我们的端口转发到445端口上</p>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="禁用系统的-smd-服务占用-445端口"><a href="#禁用系统的-smd-服务占用-445端口" class="headerlink" title="禁用系统的 smd 服务占用 445端口"></a>禁用系统的 smd 服务占用 445端口</h3><p>用 <code>Win + R</code> 打开 <code>services.msc</code> 服务，禁用 <code>Server</code> 服务，然后重启计算机生效，这一步必须要重启计算机</p>
+<h3 id="将远程端口绑定到445端口"><a href="#将远程端口绑定到445端口" class="headerlink" title="将远程端口绑定到445端口"></a>将远程端口绑定到445端口</h3><p>打开Powershell输入以下命令:</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">netsh interface portproxy add v4tov4 listenport=<span class="number">445</span> listenaddress=<span class="number">127.0</span>.<span class="number">0.1</span> connectport=<span class="number">37022</span> connectaddress=你的域名</span><br></pre></td></tr></table></figure>
+
+<p>请自行替换以上的域名和端口号</p>
+<h3 id="本地访问smb服务"><a href="#本地访问smb服务" class="headerlink" title="本地访问smb服务"></a>本地访问smb服务</h3><p>通过上面的端口转发操作,我们已经将远程的smb服务转发到了本地的445端口上,因此我们只需要访问本地的445端口就可以使用smb服务了,地址栏输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">\\127.0.0.1\share</span><br></pre></td></tr></table></figure>
+
+<p>就能访问远程的SMB服务了</p>
+<h3 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h3><p>通过上面的端口转发的方式使用smb服务,每次重启计算机都会重置我们配置的端口转发规则,所以可以做成脚本开机运行,在这里就不赘述如何设置开机启动了,需要的朋友可以自行在google上搜索设置方式</p>
+]]></content>
+      <categories>
+        <category>Windows</category>
+      </categories>
+      <tags>
+        <tag>SMB</tag>
+        <tag>Windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记一次在centos系统主机清理挖矿病毒的事情</title>
+    <url>//post/virus-clean.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近看到内网服务器cpu使用率爆炸,发现是一个进程名为x的进程搞得鬼,杀掉之后过不久又出现了,于是我猜测会不会是cron或者有别的守护进程让它一直重启</p>
+<img src="../static/img_4.png">
+
+<p>于是我看了一下<code>/etc/cron.d</code>目录,发现了这几个奇怪的文件</p>
+<img src="../static/img_5.png">
+
+<p>文件里面只有一行命令</p>
+<p><code>*/3 * * * * /usr/lib/sys/sysinit</code></p>
+<p>然后我就在<code>/usr/lib/sys</code>中找到了这个挖矿病毒的程序</p>
+<img src="../static/img_6.png">
+
+<p>用在线的病毒分析工具发现确实是挖矿病毒</p>
+<img src="../static/img_7.png">
+
+<p>于是乎,我就开始了清理病毒之路</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>首先我想到的是用<code>rm -rf</code>直接干掉他,然而却告诉我权限不够</p>
+<img src="../static/img_8.png">
+
+<p>然后我Google了一下,使用<code>lsattr</code>命令发现有a这个属性,表示不可修改,难怪我删不掉他,接着我用<code>chattr -i ./x</code>干掉了他的a属性,然后重新尝试<code>rm -rf</code>成功删除!</p>
+<p>然后我将<code>cron.d</code>中的cron定时任务用同样的方式也给干掉了,并kill掉了这两个进程,并修改了服务器的密码,于是乎这个挖矿病毒终于被我干掉了!</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>这个方案在我看来并不算真的解决了,也许这台服务器是有什么严重的漏洞导致被黑客入侵了,之后还要用漏洞扫描工具看一看系统是不是还有什么重大的漏洞</p>
+]]></content>
+      <categories>
+        <category>系统运维</category>
+      </categories>
+      <tags>
+        <tag>病毒</tag>
+        <tag>挖矿</tag>
+      </tags>
+  </entry>
+</search>
